@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  jumpSpeed: 12
+  jumpSpeed: 13
   gravity: 20
   minimumY: -60
   maximumY: 60
