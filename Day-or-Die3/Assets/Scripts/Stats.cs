@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Stats : MonoBehaviour {
 
-    public int wasserMax = 100000;
-    public int AusdauerMax = 100000;
+    public static int wasserMax = 100000;
+    public static int AusdauerMax = 100000;
 
     public int wasser = 100000;
     public int ausdauer = 100000;
@@ -36,6 +36,8 @@ public class Stats : MonoBehaviour {
         else if (wasser - value < 0)
         {
             wasser = 0;
+            gameObject.GetComponent<FirstPersonController>().enabled = false;
+            Camera.main.GetComponent<Activation>().activate(gameObject);
         }
         else
         {
@@ -52,13 +54,13 @@ public class Stats : MonoBehaviour {
         else if(ausdauer - value < 0)
         {
             ausdauer = 0;
-            reduceWasser(value / 10);
+            reduceWasser(value );
             setReg();
         }
         else
         {
             ausdauer -= value;
-            reduceWasser(value / 10);
+            reduceWasser(value );
         }   
     }
 
@@ -72,6 +74,16 @@ public class Stats : MonoBehaviour {
         }        
         else
             ausdauer += value;
+    }
+
+    public void upWasser(int value)
+    {
+        if (wasser + value >= wasserMax)
+        {
+            wasser = wasserMax;
+        }
+        else
+            wasser += value;
     }
 
     public void setReg()
@@ -89,7 +101,6 @@ public class Stats : MonoBehaviour {
     void Update () {
         if (regging)
         {
-            Debug.Log("regged by:" + ausdauerReggingPower);
             upAusdauer(ausdauerReggingPower);
         }
         else
