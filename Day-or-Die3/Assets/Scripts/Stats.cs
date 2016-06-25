@@ -37,6 +37,7 @@ public class Stats : MonoBehaviour {
         {
             wasser = 0;
             gameObject.GetComponent<FirstPersonController>().enabled = false;
+            Camera.main.GetComponent<SwapSkybox>().nextDay();
             Camera.main.GetComponent<Activation>().activate(gameObject);
         }
         else
