@@ -6,10 +6,11 @@ public class FirstPersonController : MonoBehaviour {
 
 	[Header("Movement")]
 	public float speed = 6.0F;
+    public float maxRunningSpeed = 9F;
     float speedtmp;
-	public float jumpSpeed = 12.0F;
+	public float jumpSpeed = 13.0F;
     float jumpSpeedtmp;
-	public float gravity = 20.0F;
+	public float gravity = 60.0F;
 
 	[Header("Camera View")]
 	public float minimumY = -60F;
@@ -24,13 +25,13 @@ public class FirstPersonController : MonoBehaviour {
 	public CharacterController charaCtrl;
 
 	private float rotationY;
+    private bool doubleJump;
 
 	// Use this for initialization
 	void Start () {
         speedtmp = speed;
         jumpSpeedtmp = jumpSpeed;
         charaCtrl = GetComponent<CharacterController> ();
-		
 	}
 
     public void upgrade()
@@ -55,6 +56,16 @@ public class FirstPersonController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (charaCtrl.isGrounded) {
+            if (Input.GetKey(KeyCode.LeftShift)){
+                if(speed < maxRunningSpeed)
+                {
+                    speed *= 1.1f;
+                }
+            }
+            else
+            {
+                speed = 6F;
+            }
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
@@ -71,11 +82,17 @@ public class FirstPersonController : MonoBehaviour {
                     gameObject.GetComponent<Stats>().reduceAusdauer(1000);
                     gameObject.GetComponent<Stats>().setRegTimer(1000);
                 }
-
             }
-
 		}
-		moveDirection.y -= gravity * Time.deltaTime;
+        else
+        {
+            float tempY = moveDirection.y;       
+            moveDirection = new Vector3(Input.GetAxis("Horizontal")*0.75f, 0, Input.GetAxis("Vertical")*0.75f);
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            moveDirection.y = tempY;
+        }
+        moveDirection.y -= gravity * Time.deltaTime;
 		charaCtrl.Move(moveDirection * Time.deltaTime);
 
 		float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
