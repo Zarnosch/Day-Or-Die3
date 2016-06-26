@@ -11,8 +11,10 @@ public class Stats : MonoBehaviour {
     public int ausdauer = 100000;
     bool regging = false;
 
-    int ausdauerReg = 50;
-    int ausdauerReggingPower = 150;
+    public bool active = true;
+
+    int ausdauerReg = 500;
+    int ausdauerReggingPower = 1000;
     public int ausdauerRegTimer = 500;
     
 	// Use this for initialization
@@ -66,13 +68,13 @@ public class Stats : MonoBehaviour {
         else if(ausdauer - (int)(value * Time.deltaTime * frameBoost) < 0)
         {
             ausdauer = 0;
-            reduceWasser(value );
+            reduceWasser(value/2 );
             setReg();
         }
         else
         {
             ausdauer -= (int)(value * Time.deltaTime * frameBoost);
-            reduceWasser(value );
+            reduceWasser(value/2 );
         }   
     }
 
@@ -86,6 +88,13 @@ public class Stats : MonoBehaviour {
         }        
         else
             ausdauer += (int)(value * Time.deltaTime * frameBoost);
+    }
+
+    public void maxAll()
+    {
+        wasser = wasserMax;
+        AusdauerMax = wasserMax;
+        ausdauer = AusdauerMax;
     }
 
     public void upWasser(int value)
@@ -112,7 +121,8 @@ public class Stats : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        AusdauerMax = wasser;
+        if(active)
+            AusdauerMax = wasser;
         if (regging)
         {
             upAusdauer((int)(ausdauerReggingPower* Time.deltaTime * frameBoost));
@@ -125,6 +135,11 @@ public class Stats : MonoBehaviour {
             {
                 upAusdauer((int)(ausdauerReg * Time.deltaTime * frameBoost));
             }
+        }
+        if (!active)
+        {
+            ausdauer = AusdauerMax;
+            wasser = wasserMax;
         }
         updateSight();
 
