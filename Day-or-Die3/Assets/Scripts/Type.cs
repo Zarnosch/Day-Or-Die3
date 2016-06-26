@@ -9,7 +9,8 @@ public  class Type : MonoBehaviour {
         CameraPather,
         Door,
         Activator,
-        Ending
+        Ending,
+        ChangeScene
     }
 
     public Types myType;

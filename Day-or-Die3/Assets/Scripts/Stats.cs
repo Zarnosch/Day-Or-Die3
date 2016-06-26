@@ -5,6 +5,7 @@ public class Stats : MonoBehaviour {
 
     public int wasserMax = 100000;
     public int AusdauerMax = 100000;
+    int frameBoost = 20;
 
     public int wasser = 100000;
     public int ausdauer = 100000;
@@ -39,11 +40,11 @@ public class Stats : MonoBehaviour {
 
     public void reduceWasser(int value)
     {
-        if (wasser - value >= wasserMax)
+        if (wasser - (int)(value * Time.deltaTime * frameBoost) >= wasserMax)
         {
             wasser = wasserMax;
         }
-        else if (wasser - value < 0)
+        else if (wasser - (int)(value * Time.deltaTime * frameBoost) < 0)
         {
             wasser = 0;
             gameObject.GetComponent<FirstPersonController>().enabled = false;
@@ -52,17 +53,17 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            wasser -= value;
+            wasser -= (int)(value * Time.deltaTime * frameBoost);
         }
     }
 
     public void reduceAusdauer(int value)
     {
-        if (ausdauer - value >= AusdauerMax)
+        if (ausdauer - (int)(value * Time.deltaTime * frameBoost) >= AusdauerMax)
         {
             ausdauer = AusdauerMax;
         }
-        else if(ausdauer - value < 0)
+        else if(ausdauer - (int)(value * Time.deltaTime * frameBoost) < 0)
         {
             ausdauer = 0;
             reduceWasser(value );
@@ -70,31 +71,31 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            ausdauer -= value;
+            ausdauer -= (int)(value * Time.deltaTime * frameBoost);
             reduceWasser(value );
         }   
     }
 
     public void upAusdauer(int value)
     {
-        if (ausdauer + value >= AusdauerMax)
+        if (ausdauer + (int)(value * Time.deltaTime * frameBoost) >= AusdauerMax)
         {
             ausdauer = AusdauerMax;
             regging = false;
             gameObject.GetComponent<FirstPersonController>().switchSpeed(1);
         }        
         else
-            ausdauer += value;
+            ausdauer += (int)(value * Time.deltaTime * frameBoost);
     }
 
     public void upWasser(int value)
     {
-        if (wasser + value >= wasserMax)
+        if (wasser + (int)(value * Time.deltaTime * frameBoost) >= wasserMax)
         {
             wasser = wasserMax;
         }
         else
-            wasser += value;
+            wasser +=(int) (value*Time.deltaTime* frameBoost);
     }
 
     public void setReg()
@@ -114,7 +115,7 @@ public class Stats : MonoBehaviour {
         AusdauerMax = wasser;
         if (regging)
         {
-            upAusdauer(ausdauerReggingPower);
+            upAusdauer((int)(ausdauerReggingPower* Time.deltaTime * frameBoost));
         }
         else
         {          
@@ -122,7 +123,7 @@ public class Stats : MonoBehaviour {
                 ausdauerRegTimer--;
             else
             {
-                upAusdauer(ausdauerReg);
+                upAusdauer((int)(ausdauerReg * Time.deltaTime * frameBoost));
             }
         }
         updateSight();

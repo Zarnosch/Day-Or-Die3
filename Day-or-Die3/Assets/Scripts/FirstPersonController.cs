@@ -71,16 +71,16 @@ public class FirstPersonController : MonoBehaviour {
 			moveDirection *= speed;
             if (moveDirection.magnitude != 0)
             {
-                gameObject.GetComponent<Stats>().reduceAusdauer(200);
-                gameObject.GetComponent<Stats>().setRegTimer(500);
+                //gameObject.GetComponent<Stats>().reduceAusdauer(200);
+                //gameObject.GetComponent<Stats>().setRegTimer(500);
             }
             if (upgrades > 0)
             {
                 if (Input.GetButton("Jump"))
                 {
                     moveDirection.y = jumpSpeed;
-                    gameObject.GetComponent<Stats>().reduceAusdauer((int)(200*speed));
-                    gameObject.GetComponent<Stats>().setRegTimer((int)(200 * speed));
+                    //gameObject.GetComponent<Stats>().reduceAusdauer((int)(200*speed));
+                    //gameObject.GetComponent<Stats>().setRegTimer((int)(200 * speed));
                 }
             }
 		}
