@@ -9,6 +9,6 @@ public class MouseFu : MonoBehaviour {
 	// Use this for initialization
 	void OnGUI()
 	{
-
+		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 	}
 }
