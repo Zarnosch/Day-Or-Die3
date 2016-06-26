@@ -190,7 +190,7 @@ public class MenuScript : MonoBehaviour {
 
 	public void load_second_level()
 	{
-		SceneManager.LoadScene("SecondScene");
+		SceneManager.LoadScene("Chris");
 	}
 
 	public void load_third_level()
