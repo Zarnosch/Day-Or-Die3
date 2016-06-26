@@ -257,20 +257,20 @@ public class LabGen : MonoBehaviour {
 
     void CleanLab()
     {
-        for (int x = 0; x < sizeX; x++)
+        for (int x = 1; x < sizeX-2; x++)
         {
-            for (int z = 0; z < sizeZ; z++)
+            for (int z = 1; z < sizeZ-2; z++)
             {
-                for (int y = 0; y < sizeY; y++)
+                for (int y = 1; y < sizeY-2; y++)
                 {
-                    if (x > 1 && x < sizeX - 2 && z > 0 && z < sizeZ - 1 && y > 0 && y < sizeY - 1)
+                    bool temp1 = false;
+                    bool temp2 = false;
+                    bool temp3 = false;
+                    bool temp4 = false;
+                    bool temp5 = false;
+                    bool temp6 = false;
+                    if(positioning[x , z, y] == 1)
                     {
-                        bool temp1 = false;
-                        bool temp2 = false;
-                        bool temp3 = false;
-                        bool temp4 = false;
-                        bool temp5 = false;
-                        bool temp6 = false;
                         if (positioning[x + 1, z, y] != 2 && positioning[x + 1, z, y] != -1 && positioning[x + 1, z, y] != 0)
                         {
                             temp1 = true;
@@ -295,11 +295,11 @@ public class LabGen : MonoBehaviour {
                         {
                             temp6 = true;
                         }
-                        if(temp1 && temp2 && temp3 && temp4 && temp5 && temp6)
+                        if (temp1 && temp2 && temp3 && temp4 && temp5 && temp6)
                         {
-                            positioning[x - 1, z, y] = 0;
+                            positioning[x , z, y] = 0;
                         }
-                    }
+                    }                    
                 }
             }
         }
