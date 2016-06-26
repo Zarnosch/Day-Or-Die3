@@ -17,7 +17,7 @@ namespace UnityStandardAssets.ImageEffects
 
         public AberrationMode mode = AberrationMode.Simple;
         public float intensity = 0.036f;                    // intensity == 0 disables pre pass (optimization)
-        float maxIntensity = 0.655f;
+        float maxIntensity = 0.5f;
         public float chromaticAberration = 0.2f;
         public float axialAberration = 0.5f;
         public float blur = 0.0f;                           // blur == 0 disables blur pass (optimization)
@@ -36,6 +36,7 @@ namespace UnityStandardAssets.ImageEffects
         public void setVignetting(float value)
         {
             intensity = 1 - value;
+            intensity = maxIntensity * intensity;
             if (intensity > maxIntensity)
                 intensity = maxIntensity;
         }

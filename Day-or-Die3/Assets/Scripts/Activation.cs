@@ -93,7 +93,7 @@ public class Activation : MonoBehaviour {
                 }
                 else
                 {
-                    transform.rotation = Quaternion.LookRotation(dir.position - transform.localPosition, Vector3.up) ;
+                    transform.rotation = Quaternion.LookRotation(dir.position - transform.localPosition) ;
                 }
             }
             else
@@ -110,6 +110,7 @@ public class Activation : MonoBehaviour {
                 else
                 {
                     //Move to next node
+                    reach = transform.TransformDirection(reach.normalized);
                     transform.Translate(reach.normalized * distThisFrame);
                 }
             }
@@ -147,7 +148,16 @@ public class Activation : MonoBehaviour {
                     else
                     {
                         //Move to next node
-                        transform.Translate(reach.normalized * distThisFrame, Space.Self);
+
+                        Quaternion rotation = Quaternion.LookRotation(reach);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
+                        if ((transform.rotation.eulerAngles - rotation.eulerAngles).magnitude < 0.2f)
+                        {
+                            transform.rotation = Quaternion.LookRotation(Vector3.down);
+                        }
+
+                        reach = transform.TransformDirection(reach.normalized);
+                        transform.Translate(reach.normalized * distThisFrame);
                     }
                 }
             }
@@ -195,7 +205,7 @@ public class Activation : MonoBehaviour {
                                 okays = 0;
                                 reversePathing = true;
                                 wait = !wait;
-                                transform.rotation = Quaternion.LookRotation(Vector3.forward);
+                                //transform.rotation = Quaternion.LookRotation(Vector3.forward);
                             }
                             else
                                 okays = 0;
@@ -238,6 +248,13 @@ public class Activation : MonoBehaviour {
                     else
                     {
                         //Move to next node
+                        Quaternion rotation = Quaternion.LookRotation(reach);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
+                        //if ((transform.rotation.eulerAngles - rotation.eulerAngles).magnitude < 0.2f)
+                        //{
+                        //    transform.rotation = Quaternion.LookRotation(Vector3.down);
+                        //}
+                        reach = transform.TransformDirection(reach.normalized);
                         transform.Translate(reach.normalized * distThisFrame, Space.Self);
                     }
                 }
@@ -258,10 +275,18 @@ public class Activation : MonoBehaviour {
                     reversePathing = false;
                     player.GetComponent<Stats>().upWasser(Stats.wasserMax);
                     player.GetComponent<FirstPersonController>().enabled = true;
+                    Camera.main.GetComponent<SwapSkybox>().nextDay();
                 }
                 else
                 {
                     //Move to next node
+                    Quaternion rotation = Quaternion.LookRotation(reach);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
+                    //if ((transform.rotation.eulerAngles - rotation.eulerAngles).magnitude < 0.2f)
+                    //{
+                    //    transform.rotation = Quaternion.LookRotation(Vector3.down);
+                    //}
+                    reach = transform.TransformDirection(reach.normalized);
                     transform.Translate(reach.normalized * distThisFrame);
                 }
             }
