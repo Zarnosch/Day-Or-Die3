@@ -4,32 +4,34 @@ using System.Collections;
 public class HUDSchwAu : MonoBehaviour {
 
 	public GameObject player;
-	int maxau;
-	int maxwa;
+	float maxau;
+	float maxwa;
+	float currau;
+	float currwa;
+	float prowa;
+	float proau;
 
 	void Start()
 	{
-		maxau = gameObject.GetComponent<Stats>().getAusdauerMay();
-		maxwa = gameObject.GetComponent<Stats>().getWasserMax();
+		maxwa = player.gameObject.GetComponent<Stats>().getWasserMax();
 	}
-
 
 	void OnGUI()
 	{
-		int currau = gameObject.GetComponent<Stats> ().ausdauer;
-		int currwa = gameObject.GetComponent<Stats> ().wasser;
+		currau = player.gameObject.GetComponent<Stats>().ausdauer;
+		currwa = player.gameObject.GetComponent<Stats>().wasser;
+		maxau = player.gameObject.GetComponent<Stats>().getAusdauerMay();
 
-		float prowa = currwa / maxwa;
-		float proau = currau / maxau;
+		prowa = currwa / maxwa;
+		proau = currau / maxau;
 
 
-		GUI.Label (new Rect(Screen.height-200, 50,50,50), "Ausdauer left: ");
-
-		GUI.Box (new Rect (Screen.height - 175,50,200*proau,50), maxau-currau);
-
-		GUI.Label (new Rect(Screen.height-100, 50, 50,50), "Schweiß left: ");
-
-		GUI.Box (new Rect (Screen.height - 75,50,200*prowa,50),maxwa-currwa);
+		GUI.Label (new Rect(50,Screen.height-200,200,50), "Ausdauer left: ");
+		GUI.Box (new Rect (50,Screen.height - 175,200*proau,25), "");
+		GUI.Box (new Rect (50,Screen.height - 150,200,25), currau + "/" + maxau);
+		GUI.Label (new Rect(50,Screen.height-100, 200,50), "Schweiß left: ");
+		GUI.Box (new Rect (50,Screen.height - 75,200*prowa,25),"");
+		GUI.Box (new Rect (50,Screen.height - 50,200,25),currwa + "/" + maxwa);
 
 
 	}
