@@ -87,10 +87,11 @@ public class PauseMenu : MonoBehaviour {
 				}
 				if (GUI.Button (b_steu, "Steuerung")) { 
 					switchSteuerung ();
-					Debug.Log ("Hit me again!");
+					GUI.Box (new Rect (((Screen.width/4)-290), Screen.height/2-250, 500, 500), "Steuerung");
 				}
 				if (GUI.Button (b_stat, "Statistik")) { 
-					switchStatistics (); 
+					switchStatistics ();
+					GUI.Box (new Rect (((Screen.width/2)+210), Screen.height/2-250, 500, 500), "Statistics");
 				}
 			}
 
