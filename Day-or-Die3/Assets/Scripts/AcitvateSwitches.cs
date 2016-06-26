@@ -6,7 +6,7 @@ public class AcitvateSwitches : MonoBehaviour {
 
     public GameObject targets;
     int count;
-    float minDistance = 10f;
+    float minDistance = 5f;
     Transform switches = null;
 
     void Start()

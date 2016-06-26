@@ -63,11 +63,14 @@ public class PauseMenu : MonoBehaviour {
 		if (isPaused) { 
 
 
-				b_fort.y =	(Screen.height - ctrl_height) / 2 - 100;
-				b_steu.y =	((Screen.height - ctrl_height) / 2) - 50;
-				b_stat.y =	((Screen.height - ctrl_height) / 2);
-				b_haupt.y =	((Screen.height - ctrl_height) / 2) + 50;
-				b_enden.y =	((Screen.height - ctrl_height) / 2) + 100;
+			b_fort.y =	(Screen.height - ctrl_height) / 2 - 100;
+			b_steu.y =	((Screen.height - ctrl_height) / 2) - 50;
+			b_stat.y =	((Screen.height - ctrl_height) / 2);
+			b_haupt.y =	((Screen.height - ctrl_height) / 2) + 50;
+			b_enden.y =	((Screen.height - ctrl_height) / 2) + 100;
+
+
+
 				if (GUI.Button (b_fort, "Spiel fortsetzen")) { 
 					switchTime ();
 					isStatistics = false;
@@ -87,11 +90,24 @@ public class PauseMenu : MonoBehaviour {
 				}
 				if (GUI.Button (b_steu, "Steuerung")) { 
 					switchSteuerung ();
-					Debug.Log ("Hit me again!");
-				}
+									}
 				if (GUI.Button (b_stat, "Statistik")) { 
-					switchStatistics (); 
+					switchStatistics ();
+					GUI.Box (new Rect (((Screen.width / 2) + 210), Screen.height / 2 - 250, 500, 500), "Statistics");
 				}
+			if (isSteuerung) {
+
+				int y = 20;
+				GUI.Box (new Rect (((Screen.width / 4) - 250), Screen.height / 2 - 250, 400, 250), "Steuerung");
+
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y), 200, 50), "W, A, S, D  -    Bewegung ");
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y * 2), 300, 50), "E            -    Benutzen von Gegenständen");
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y * 3), 200, 50), "F            -    Rat Sense");
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y * 4), 200, 50), "Leertaste  -    Springen");
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y * 5), 200, 50), "Shift       -    Beschleunigen");
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y * 6), 200, 50), "Esc        -    Pausemenü");
+				GUI.Label (new Rect ((Screen.width / 4) - 290+150, Screen.height / 2 - 250 + (y * 7), 200, 50), "Maus      -    Kamera");
+			}
 			}
 
 	}

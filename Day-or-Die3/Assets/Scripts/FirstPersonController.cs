@@ -21,6 +21,7 @@ public class FirstPersonController : MonoBehaviour {
 
 
 	private Vector3 moveDirection = Vector3.zero;
+    private bool blocked = false;
 
 	public CharacterController charaCtrl;
 
@@ -43,49 +44,56 @@ public class FirstPersonController : MonoBehaviour {
     {
         if(type == 0)
         {
-            speed = 0;
-            jumpSpeed = 0;
+            speed = speed/3;
+            jumpSpeed = jumpSpeed/3;
+            blocked = true;
         }
         if (type == 1)
         {
             speed = speedtmp;
             jumpSpeed = jumpSpeedtmp;
+            blocked = false;
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
 		if (charaCtrl.isGrounded) {
-            if (Input.GetKey(KeyCode.LeftShift)){
-                if(speed < maxRunningSpeed)
-                {
-                    speed *= 1.1f;
-                }
-            }
-            else
+            if (!blocked)
             {
-                speed = 6F;
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    if (speed < maxRunningSpeed)
+                    {
+                        speed *= 1.1f;
+                    }
+                }
+                else
+                {
+                    speed = 6F;
+                }
             }
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= speed;
             if (moveDirection.magnitude != 0)
             {
-                //gameObject.GetComponent<Stats>().reduceAusdauer(200);
-                //gameObject.GetComponent<Stats>().setRegTimer(500);
+                gameObject.GetComponent<Stats>().reduceAusdauer(200);
+                gameObject.GetComponent<Stats>().setRegTimer(500);
             }
             if (upgrades > 0)
             {
                 if (Input.GetButton("Jump"))
                 {
                     moveDirection.y = jumpSpeed;
-                    //gameObject.GetComponent<Stats>().reduceAusdauer((int)(200*speed));
-                    //gameObject.GetComponent<Stats>().setRegTimer((int)(200 * speed));
+                    gameObject.GetComponent<Stats>().reduceAusdauer((int)(200*speed));
+                    gameObject.GetComponent<Stats>().setRegTimer((int)(200 * speed));
                 }
             }
 		}
         else
         {
+            gameObject.GetComponent<Stats>().reduceAusdauer((int)(100));
             float tempY = moveDirection.y;       
             moveDirection = new Vector3(Input.GetAxis("Horizontal")*0.75f, 0, Input.GetAxis("Vertical")*0.75f);
             moveDirection = transform.TransformDirection(moveDirection);
