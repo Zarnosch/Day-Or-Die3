@@ -6,7 +6,7 @@ public class dayMove : MonoBehaviour {
     public GameObject path;
     public bool done = false;
     bool reverse = false;
-    float speed = 5f;
+    public float speed = 5f;
     bool activatet;
     int pathCountMax = 0;
     int pathCount = 0;
