@@ -83,7 +83,6 @@ public class HUDButton : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
 			is_shift = false; 
-			is_foto = false; Debug ("SHIFFFTTTT! DU HAST GESCHIFFT!!!");
 		}
 
 

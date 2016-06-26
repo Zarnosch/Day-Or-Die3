@@ -1004,7 +1004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1995454097}
-        m_MethodName: load_first_level
+        m_MethodName: load_first_scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2279,7 +2279,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1995454097}
-        m_MethodName: load_third_level
+        m_MethodName: load_third_scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2781,7 +2781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd90a0436b85c043ae861bbfec6a2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 0c42b4476cbc5934e8e730f968a3e6e0, type: 3}
+  cursorTexture: {fileID: 0}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
 --- !u!1 &737790960
@@ -3546,7 +3546,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1995454097}
-        m_MethodName: load_third_level
+        m_MethodName: load_fifth_scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3815,7 +3815,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1995454097}
-        m_MethodName: load_second_level
+        m_MethodName: load_second_scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4566,7 +4566,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1995454097}
-        m_MethodName: load_third_level
+        m_MethodName: load_fourth_scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

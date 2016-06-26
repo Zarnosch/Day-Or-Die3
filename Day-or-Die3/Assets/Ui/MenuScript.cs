@@ -211,27 +211,27 @@ public class MenuScript : MonoBehaviour {
 
 	public void load_first_scene()
 	{
-		SceneManager.LoadScene("Scene1");
+		SceneManager.LoadScene("Dialog1");
 	}
 
 	public void load_second_scene()
 	{
-		SceneManager.LoadScene("Scene2");
+		SceneManager.LoadScene("Dialog2");
 	}
 
 	public void load_third_scene()
 	{
-		SceneManager.LoadScene("Scene3");
+		SceneManager.LoadScene("Dialog3");
 	}
 
 	public void load_fourth_scene()
 	{
-		SceneManager.LoadScene("Scene4");
+		SceneManager.LoadScene("Dialog4");
 	}
 
 	public void load_fifth_scene()
 	{
-		SceneManager.LoadScene("Scene5");
+		SceneManager.LoadScene("Dialog5");
 	}
 
 	public void exit_game()
