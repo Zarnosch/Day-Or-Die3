@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Tamy.unity
   - enabled: 1
     path: Assets/Scenes/FirstScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Chris.unity
