@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Activation : MonoBehaviour {
 
     public GameObject path;
     public GameObject movingObjects;
+    public string scene;
     Transform dir;
     Transform obj;
     int pathCount = 0;
@@ -273,7 +275,7 @@ public class Activation : MonoBehaviour {
                     finished = false;
                     active = false;
                     reversePathing = false;
-                    player.GetComponent<Stats>().upWasser(Stats.wasserMax);
+                    player.GetComponent<Stats>().upWasser(player.GetComponent<Stats>().getWasserMax());
                     player.GetComponent<FirstPersonController>().enabled = true;
                     Camera.main.GetComponent<SwapSkybox>().nextDay();
                 }
@@ -303,6 +305,14 @@ public class Activation : MonoBehaviour {
         }
     }
 
+    void nextScene()
+    {
+        if (active && scene != null)
+        {
+            SceneManager.LoadScene(scene);
+        }
+    }
+
     void Update()
     {
         if(GetComponent<Type>().getMyType() == Type.Types.Pather)
@@ -316,6 +326,10 @@ public class Activation : MonoBehaviour {
         if (GetComponent<Type>().getMyType() == Type.Types.CameraPather)
         {
             cameraPathing();
+        }
+        if(GetComponent<Type>().getMyType() == Type.Types.Ending)
+        {
+            nextScene();
         }
     }
 }

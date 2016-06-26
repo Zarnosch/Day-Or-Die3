@@ -13,6 +13,8 @@ public class MenuScript : MonoBehaviour {
 	public Button b_exit;
 	public Button b_credits;
 
+	public Image i_rat;
+
 
 
 	// Use this for initialization
@@ -25,6 +27,8 @@ public class MenuScript : MonoBehaviour {
 		b_start = b_start.GetComponent<Button>();
 		b_exit = b_exit.GetComponent<Button>(); 
 		b_credits = b_credits.GetComponent<Button>();
+
+		i_rat = i_rat.GetComponent<Image> ();
 
 		m_exit.enabled = false;
 		m_credits.enabled = false;
@@ -40,6 +44,8 @@ public class MenuScript : MonoBehaviour {
 		b_start.enabled = false;
 		b_exit.enabled = false;
 		b_credits.enabled = false;
+
+		i_rat.enabled = false;
 	}
 
 	public void click_credits()
@@ -51,6 +57,8 @@ public class MenuScript : MonoBehaviour {
 		b_start.enabled = false;
 		b_exit.enabled = false;
 		b_credits.enabled = false;
+
+		i_rat.enabled = false;
 	}
 
 	public void click_play()
@@ -62,6 +70,8 @@ public class MenuScript : MonoBehaviour {
 		b_start.enabled = false;
 		b_exit.enabled = false;
 		b_credits.enabled = false;
+
+		i_rat.enabled = false;
 	}
 
 	public void click_back_to_start()
@@ -73,6 +83,8 @@ public class MenuScript : MonoBehaviour {
 		b_start.enabled = true;
 		b_exit.enabled = true;
 		b_credits.enabled = true;
+
+		i_rat.enabled = true;
 	}
 
 	public  void load_first_level()
@@ -82,12 +94,12 @@ public class MenuScript : MonoBehaviour {
 
 	public void load_second_level()
 	{
-		SceneManager.LoadScene("SecondLevel");
+		SceneManager.LoadScene("SecondScene");
 	}
 
 	public void load_third_level()
 	{
-		SceneManager.LoadScene("ThirdLevel");
+		SceneManager.LoadScene("ThirdScene");
 	}
 
 	public void exit_game()

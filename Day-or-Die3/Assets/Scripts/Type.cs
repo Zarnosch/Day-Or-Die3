@@ -8,7 +8,8 @@ public  class Type : MonoBehaviour {
         Pather,
         CameraPather,
         Door,
-        Activator
+        Activator,
+        Ending
     }
 
     public Types myType;
