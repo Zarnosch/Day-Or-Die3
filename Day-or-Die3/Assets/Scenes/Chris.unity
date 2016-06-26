@@ -165,6 +165,29 @@ MeshFilter:
 GameObject:
   m_PrefabParentObject: {fileID: 126152, guid: f0f4344c4d9352646b553a177c2e2cf0, type: 2}
   m_PrefabInternal: {fileID: 136300125}
+--- !u!65 &71755574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 71755568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &71755575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 71755568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157320918563b474fa88cf3304b15fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &136300125
 Prefab:
   m_ObjectHideFlags: 0
@@ -174,7 +197,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 436312, guid: f0f4344c4d9352646b553a177c2e2cf0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 153.347
+      value: 153.47
       objectReference: {fileID: 0}
     - target: {fileID: 436312, guid: f0f4344c4d9352646b553a177c2e2cf0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -940,6 +963,18 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 122554, guid: 3305aa9ee42470a4d9a0a2c647d69f67, type: 2}
   m_PrefabInternal: {fileID: 578773517}
+--- !u!114 &1077257154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1077257153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d18fb5124457c4fa05c66b83c82816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 71755568}
 --- !u!114 &1077257162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,11 +1113,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1234820373}
   - 33: {fileID: 1234820372}
-  - 23: {fileID: 1234820370}
   - 136: {fileID: 1234820371}
-  - 114: {fileID: 1234820369}
-  - 114: {fileID: 1234820374}
-  - 136: {fileID: 1234820375}
+  - 23: {fileID: 1234820370}
+  - 54: {fileID: 1234820369}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1090,18 +1123,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1234820369
-MonoBehaviour:
+--- !u!54 &1234820369
+Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234820368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc37177218aa4f448bba39c3acb91dd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: FirstScene
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &1234820370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1135,12 +1171,12 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234820368}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1234820372
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1155,36 +1191,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234820368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 153.554, y: 187.667, z: 1118.57}
+  m_LocalPosition: {x: 153.554, y: 188.23, z: 1117.825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
---- !u!114 &1234820374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234820368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccea328f8c655344b8856ab12fe3a317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!136 &1234820375
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234820368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1366521524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   movingObjects: {fileID: 0}
-  scene: FirstScene
+  scene: Hauptmenu
   finished: 0
   player: {fileID: 0}
   active: 0
