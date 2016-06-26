@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Stats : MonoBehaviour {
 
-    public static int wasserMax = 100000;
-    public static int AusdauerMax = 100000;
+    public int wasserMax = 100000;
+    public int AusdauerMax = 100000;
 
     public int wasser = 100000;
     public int ausdauer = 100000;
@@ -18,6 +18,16 @@ public class Stats : MonoBehaviour {
 	void Start () {
 	
 	}
+
+    public int getWasserMax()
+    {
+        return wasserMax;
+    }
+
+    public int getAusdauerMay()
+    {
+        return AusdauerMax;
+    }
 
     public void setRegTimer(int time)
     {
@@ -37,6 +47,7 @@ public class Stats : MonoBehaviour {
         {
             wasser = 0;
             gameObject.GetComponent<FirstPersonController>().enabled = false;
+            Camera.main.GetComponent<SwapSkybox>().nextDay();
             Camera.main.GetComponent<Activation>().activate(gameObject);
         }
         else
@@ -99,6 +110,8 @@ public class Stats : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        AusdauerMax = wasser;
         if (regging)
         {
             upAusdauer(ausdauerReggingPower);

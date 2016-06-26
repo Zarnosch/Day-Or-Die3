@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Activation : MonoBehaviour {
 
     public GameObject path;
     public GameObject movingObjects;
+    public string scene;
     Transform dir;
     Transform obj;
     int pathCount = 0;
@@ -93,7 +95,7 @@ public class Activation : MonoBehaviour {
                 }
                 else
                 {
-                    transform.rotation = Quaternion.LookRotation(dir.position - transform.localPosition, Vector3.up) ;
+                    transform.rotation = Quaternion.LookRotation(dir.position - transform.localPosition) ;
                 }
             }
             else
@@ -110,6 +112,7 @@ public class Activation : MonoBehaviour {
                 else
                 {
                     //Move to next node
+                    reach = transform.TransformDirection(reach.normalized);
                     transform.Translate(reach.normalized * distThisFrame);
                 }
             }
@@ -147,7 +150,16 @@ public class Activation : MonoBehaviour {
                     else
                     {
                         //Move to next node
-                        transform.Translate(reach.normalized * distThisFrame, Space.Self);
+
+                        Quaternion rotation = Quaternion.LookRotation(reach);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
+                        if ((transform.rotation.eulerAngles - rotation.eulerAngles).magnitude < 0.2f)
+                        {
+                            transform.rotation = Quaternion.LookRotation(Vector3.down);
+                        }
+
+                        reach = transform.TransformDirection(reach.normalized);
+                        transform.Translate(reach.normalized * distThisFrame);
                     }
                 }
             }
@@ -195,7 +207,7 @@ public class Activation : MonoBehaviour {
                                 okays = 0;
                                 reversePathing = true;
                                 wait = !wait;
-                                transform.rotation = Quaternion.LookRotation(Vector3.forward);
+                                //transform.rotation = Quaternion.LookRotation(Vector3.forward);
                             }
                             else
                                 okays = 0;
@@ -238,6 +250,13 @@ public class Activation : MonoBehaviour {
                     else
                     {
                         //Move to next node
+                        Quaternion rotation = Quaternion.LookRotation(reach);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
+                        //if ((transform.rotation.eulerAngles - rotation.eulerAngles).magnitude < 0.2f)
+                        //{
+                        //    transform.rotation = Quaternion.LookRotation(Vector3.down);
+                        //}
+                        reach = transform.TransformDirection(reach.normalized);
                         transform.Translate(reach.normalized * distThisFrame, Space.Self);
                     }
                 }
@@ -256,12 +275,20 @@ public class Activation : MonoBehaviour {
                     finished = false;
                     active = false;
                     reversePathing = false;
-                    player.GetComponent<Stats>().upWasser(Stats.wasserMax);
+                    player.GetComponent<Stats>().upWasser(player.GetComponent<Stats>().getWasserMax());
                     player.GetComponent<FirstPersonController>().enabled = true;
+                    Camera.main.GetComponent<SwapSkybox>().nextDay();
                 }
                 else
                 {
                     //Move to next node
+                    Quaternion rotation = Quaternion.LookRotation(reach);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5);
+                    //if ((transform.rotation.eulerAngles - rotation.eulerAngles).magnitude < 0.2f)
+                    //{
+                    //    transform.rotation = Quaternion.LookRotation(Vector3.down);
+                    //}
+                    reach = transform.TransformDirection(reach.normalized);
                     transform.Translate(reach.normalized * distThisFrame);
                 }
             }
@@ -278,6 +305,14 @@ public class Activation : MonoBehaviour {
         }
     }
 
+    void nextScene()
+    {
+        if (active && scene != null)
+        {
+            SceneManager.LoadScene(scene);
+        }
+    }
+
     void Update()
     {
         if(GetComponent<Type>().getMyType() == Type.Types.Pather)
@@ -291,6 +326,10 @@ public class Activation : MonoBehaviour {
         if (GetComponent<Type>().getMyType() == Type.Types.CameraPather)
         {
             cameraPathing();
+        }
+        if(GetComponent<Type>().getMyType() == Type.Types.Ending)
+        {
+            nextScene();
         }
     }
 }
