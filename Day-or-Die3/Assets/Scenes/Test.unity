@@ -163,6 +163,7 @@ GameObject:
   - 114: {fileID: 1985816641}
   - 114: {fileID: 1985816642}
   - 114: {fileID: 1985816639}
+  - 114: {fileID: 1985816643}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -249,6 +250,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0222efe30d41b40875f4060a41d819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_txt: {fileID: 2800000, guid: d5a50fae38eb51a49acb274ed50e824d, type: 3}
+  wasd_txt: {fileID: 2800000, guid: c39829ddfcfd83041b94418b2555a8b9, type: 3}
+  f_txt: {fileID: 2800000, guid: e56b177c383daf746a1371dd62504a15, type: 3}
+  shift_txt: {fileID: 2800000, guid: 6da407c9418821942a5f3ae2c0eb0056, type: 3}
+  leer_txt: {fileID: 2800000, guid: 241fc8d3751cf404680279be11437128, type: 3}
+  foto_txt: {fileID: 2800000, guid: 082f3b91c8559154e84e52c602224ea5, type: 3}
+  esc_txt: {fileID: 2800000, guid: 922f9fdf3b47f38459058d0178f7de2a, type: 3}
+  is_e: 0
+  is_wasd: 0
+  is_f: 0
+  is_shift: 1
+  is_leer: 0
+  is_foto: 0
+  is_esc: 0
 --- !u!114 &1985816640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,5 +297,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac8db9e8ff82d84b92fb313454ed7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
   isSteuerung: 0
   isStatistics: 0
+  b_fort:
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  b_haupt:
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  b_enden:
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  b_steu:
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  b_stat:
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  ctrl_width: 160
+  ctrl_height: 30
+--- !u!114 &1985816643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985816633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd90a0436b85c043ae861bbfec6a2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 0c42b4476cbc5934e8e730f968a3e6e0, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}

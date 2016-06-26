@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2323512}
   - 95: {fileID: 9543330}
   - 114: {fileID: 11406316}
+  - 64: {fileID: 6487336}
   m_Layer: 0
   m_Name: DayMover
   m_TagString: Untagged
@@ -25,10 +26,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193172}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -25.730495, y: 15.655312, z: -10.060656}
-  m_LocalScale: {x: 10.203037, y: 10.203031, z: 10.203031}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.23, y: -31.04, z: -24.35}
+  m_LocalScale: {x: 7.7899895, y: 7.789984, z: 7.789984}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,7 +43,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5c458ca461de3bc499f114acdf4a352e, type: 2}
+  - {fileID: 2100000, guid: b5e1d19a5df5ffe4a9e22a538ce9491f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -64,6 +65,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193172}
+  m_Mesh: {fileID: 4300000, guid: b0a367dd4bc23124d94970a18513d747, type: 3}
+--- !u!64 &6487336
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: b0a367dd4bc23124d94970a18513d747, type: 3}
 --- !u!95 &9543330
 Animator:
@@ -95,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   done: 0
+  speed: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
