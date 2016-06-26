@@ -23,7 +23,7 @@ public class Activation : MonoBehaviour {
 
     public bool active = false;
     public bool reversePathing = false;
-    float speed = 5f;
+    public float speed = 5f;
 
     void Start()
     {
@@ -93,14 +93,14 @@ public class Activation : MonoBehaviour {
                 {
                     finished = true;
                 }
-                else
-                {
-                    transform.rotation = Quaternion.LookRotation(dir.position - transform.localPosition) ;
-                }
+                //else
+                //{
+                //    transform.rotation = Quaternion.LookRotation(dir.position - transform.localPosition) ;
+                //}
             }
             else
             {
-                Vector3 reach = dir.position - transform.localPosition;
+                Vector3 reach = dir.position - transform.position;
 
                 float distThisFrame = speed * Time.deltaTime;
 
@@ -112,7 +112,7 @@ public class Activation : MonoBehaviour {
                 else
                 {
                     //Move to next node
-                    reach = transform.TransformDirection(reach.normalized);
+                    //reach = transform.TransformDirection(reach.normalized);
                     transform.Translate(reach.normalized * distThisFrame);
                 }
             }
@@ -138,7 +138,7 @@ public class Activation : MonoBehaviour {
                 }
                 else
                 {
-                    Vector3 reach = dir.position - transform.localPosition;
+                    Vector3 reach = dir.position - transform.position;
 
                     float distThisFrame = speed * Time.deltaTime;
 
@@ -173,6 +173,7 @@ public class Activation : MonoBehaviour {
                 {
                     transform.rotation = Quaternion.LookRotation(Vector3.down);
                     active = false;
+                    player.GetComponent<Stats>().maxAll();
                 }
             }
 
@@ -275,7 +276,7 @@ public class Activation : MonoBehaviour {
                     finished = false;
                     active = false;
                     reversePathing = false;
-                    player.GetComponent<Stats>().upWasser(player.GetComponent<Stats>().getWasserMax());
+                    //player.GetComponent<Stats>().maxAll();
                     player.GetComponent<FirstPersonController>().enabled = true;
                     Camera.main.GetComponent<SwapSkybox>().nextDay();
                 }
